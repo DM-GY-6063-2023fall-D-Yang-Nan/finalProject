@@ -1,8 +1,9 @@
 let colors = {
-  bg: [30, 30, 30, 60],
+  bg: [0, 0, 0, 60],
   fireworks: [
-      "#D94625",
-      "#BF4E98",
+      "#FFC0CA",
+      "#D9C3FF",
+      "#ADD8E6",
       // 第三种颜色不使用
   ]
 };
@@ -20,7 +21,7 @@ class Particle {
       this.color = color;
       this.size = size;
       this.defaultSize = size;
-      this.life = life;
+      this.life = life*1.5;
       this.defaultLife = life;
   }
 
@@ -65,12 +66,12 @@ class FireWorkBall extends Particle {
   explode() {
       for (let i = 0; i < 200; i++) {
           const vec = p5.Vector.random2D().mult(random(2, 5));
-          const color = colors.fireworks[i % 2]; // 交替选择两种颜色
+          const color = colors.fireworks[i % 3]; // 交替选择两种颜色
           particles.push(new Particle(
               this.x,
               this.y,
               color,
-              15,
+              10,
               vec.x,
               vec.y,
               random(60, 100) * random(0.7, 1.3)
@@ -113,7 +114,7 @@ function mousePressed() {
       windowWidth / 2,
       windowHeight,
       colors.fireworks[Math.floor(random() * colors.fireworks.length)],
-      7,
+      10,
       vx,
   ));
 }
