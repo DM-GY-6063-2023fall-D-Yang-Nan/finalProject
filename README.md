@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 # Visual Effects
 In this section, I attempted the creation of visual effects for fireworks.
@@ -80,4 +81,6 @@ Fireworks are being banned in more and more places due to air pollution, environ
 
 
 
+
+=======
 
