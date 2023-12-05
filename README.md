@@ -1,43 +1,53 @@
-# 视觉效果
-在这一部分我尝试了烟花的视觉效果的制作
+# Visual Effects
+In this section, I attempted the creation of visual effects for fireworks.
 
-在没有传感器的部分，我想先创建一个使用 p5.js 的烟花动画。动画应当响应用户的鼠标点击，发射烟花，并展示不同颜色和形状的粒子。
+In the part without sensors, I want to first create a fireworks animation using p5.js. The animation should respond to the user's mouse clicks, launching fireworks, and displaying particles of different colors and shapes.
 
-关键特性
-·烟花随鼠标点击位置发射。如果鼠标在屏幕左边点击烟花就向左移动，反过来也一样。（后续方便改成传感器控制）
-·烟花上升到一定高度后爆炸，产生颜色丰富的粒子。
-·粒子随时间逐渐消失。
+Key Features
+· Fireworks launch at the mouse click location. If the mouse clicks on the left side of the screen, the firework moves left, and vice versa. (This will be convenient to change to sensor control later.)
+· Fireworks explode after rising to a certain height, producing particles of rich colors.
+· Particles gradually disappear over time.
 
-# 伪代码
-定义颜色配置
-定义物理参数：最大水平速度，重力加速度
+# Pseudocode
+Define color configurations
+Define physical parameters: maximum horizontal velocity, gravity acceleration
 
-定义粒子类：
-    构造函数：初始化位置，颜色，大小，速度，生命期
-    绘制方法：在画布上绘制粒子
-    移动方法：更新粒子位置和生命期
+Define Particle class:
+Constructor: Initialize position, color, size, velocity, lifespan
+Draw method: Draw particle on canvas
+Move method: Update particle position and lifespan
 
-定义烟花球类（继承自粒子类）：
-    构造函数：初始化烟花球
-    移动方法：重写移动逻辑，触发爆炸
-    爆炸方法：生成多个粒子
+Define Firework Ball class (inherits from Particle class):
+Constructor: Initialize firework ball
+Move method: Rewrite the movement logic, trigger explosion
+Explosion method: Generate multiple particles
 
-初始化粒子和烟花列表
+Initialize particle and fireworks lists
 
-设置函数：
-    创建画布
-    设置背景和绘制样式
+Setup function:
+Create canvas
+Set background and drawing styles
 
-绘制函数：
-    绘制背景
-    更新并绘制所有粒子和烟花
-    清除不活跃的粒子和烟花
+Draw function:
+Draw background
+Update and draw all particles and fireworks
+Remove inactive particles and fireworks
 
-鼠标点击事件处理：
-    根据鼠标位置创建新的烟花
+Mouse click event handling:
+Create new fireworks based on mouse position
+function mousePressed() {
+  let distanceToCenter = mouseX - windowWidth / 2;
+  let vx = distanceToCenter / windowWidth * maxVx * 6;
 
-# 后续计划
-视觉效果：
-现在已经有了有了比较简单的烟花效果，但是可能比较普通？后续考虑更改烟花粒子的形状，爆炸的特点，或者加入一些别的元素以及背景。您有什么好的想法吗？欢迎告诉我！
-传感器：
-现在还没有和传感器相互连接，我喜欢可以通过手势去控制烟花的方向，rgb色卡控制烟花的颜色，这也是后续需要完成的部分。
+  fireworks.push(new FireWorkBall(
+      windowWidth / 2,
+      windowHeight,
+      colors.fireworks[Math.floor(random() * colors.fireworks.length)],
+      10,
+      vx,
+  ));
+}
+
+# Future Plans
+Visual Effects:
+I already have a relatively simple firework effect, but it might be quite ordinary? In the future, consider changing the shape of the fireworks particles, the characteristics of the explosion, or adding some other elements and backgrounds. Do 
