@@ -4,7 +4,6 @@ let colors = {
       "#FFC0CA",
       "#D9C3FF",
       "#ADD8E6",
-      // 第三种颜色不使用
   ]
 };
 
